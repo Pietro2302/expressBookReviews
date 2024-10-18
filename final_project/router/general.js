@@ -18,8 +18,11 @@ public_users.get('/',function (req, res) {
 
 // Get book details based on ISBN
 public_users.get('/isbn/:isbn',function (req, res) {
-    const ISBN = req.params.isbn;
-    let filtered_books = books.filter((book) => book.isbn == ISBN);
+    const ISBNTarget = req.params.isbn;
+    let filtered_books = books.filter(function(books){
+        return books.isbn == ISBNTarget;
+    }
+    );
     res.send(filtered_books);
  });
   
